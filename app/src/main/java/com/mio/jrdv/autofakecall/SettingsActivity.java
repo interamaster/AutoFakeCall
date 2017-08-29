@@ -57,6 +57,17 @@ public class SettingsActivity extends AppCompatActivity {
 
         boolean showIcon = showIconSwitch.isChecked();
 
+        //TODO:
+        /*
+        PackageManager pm = getApplicationContext().getPackageManager();
+        pm.setComponentEnabledSetting(getComponentName(), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+
+
+        will make the app NOT upgradeable from google play as the OS will not find the package
+         after this component disabling and will not able to re-install it, unless the app is
+         not manullay uninstalled (which is not a user friendly behaviour)
+         */
+
         if (!showIcon) {
 
             packageManager.setComponentEnabledSetting(LAUNCHER_COMPONENT_NAME, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
