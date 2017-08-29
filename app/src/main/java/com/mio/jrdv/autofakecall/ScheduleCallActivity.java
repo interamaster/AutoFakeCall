@@ -13,6 +13,7 @@ import android.provider.CallLog;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +24,11 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
+
+
+//V03 añadido permiso para poder detcatr el marcado de 111 para volver a mostar icono en LAUNCHER!!!
+
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
 
@@ -106,8 +112,26 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////detectatr outgoing call para vokver a poner icono///////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.PROCESS_OUTGOING_CALLS)
+                == PackageManager.PERMISSION_DENIED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{ Manifest.permission.PROCESS_OUTGOING_CALLS },
+                    REQUEST_CODE_READ_CONTACTS);
+        }
+
+
+
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         callType = (RadioGroup)findViewById(R.id.callTypeRadioGroup);
 
@@ -295,6 +319,8 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Log.d("INFO","onactivityresult de ScheduleCallActivity: "+resultCode);
 
         if (resultCode != RESULT_OK) return;
 

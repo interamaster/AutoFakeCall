@@ -20,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private EditText numberToDialInput;
 
-    private static final ComponentName LAUNCHER_COMPONENT_NAME = new ComponentName("com.ztech.fakecalllollipop", "com.ztech.fakecalllollipop.Launcher");
+    private static final ComponentName LAUNCHER_COMPONENT_NAME = new ComponentName("com.mio.jrdv.autofakecall", "com.mio.jrdv.autofakecall.Launcher");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

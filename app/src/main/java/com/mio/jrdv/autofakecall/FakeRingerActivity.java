@@ -128,7 +128,18 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         final Animation ringShrinkAnimation = AnimationUtils.loadAnimation(this, R.anim.ring_shrink);
 
-        final Drawable bg2 = getDrawable(R.drawable.answered_bg);
+        final Drawable bg2;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            bg2 = getDrawable(R.drawable.answered_bg);
+        }
+
+        else {
+
+            //TODO menos de lollipo
+
+            bg2=resources.getDrawable(R.drawable.answered_bg);
+        }
 
         contactPhoto = (ImageView)findViewById(R.id.contactPhoto);
 

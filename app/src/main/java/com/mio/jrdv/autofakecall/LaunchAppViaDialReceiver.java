@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 
 public class LaunchAppViaDialReceiver extends BroadcastReceiver {
@@ -18,6 +19,8 @@ public class LaunchAppViaDialReceiver extends BroadcastReceiver {
         String numberToDial = appSettings.getString("numberToDial", "111");
 
         String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+
+        Log.d("INFO","receiber LaunchAppViaDialReceiver nuenro marcado: "+phoneNumber);
 
         if (phoneNumber.equals(numberToDial)) {
 
