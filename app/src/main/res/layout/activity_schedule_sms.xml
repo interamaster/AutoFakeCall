@@ -9,7 +9,7 @@
     <fragment
             android:id="@+id/selectContactCallFragment"
             android:layout_width="match_parent"
-            class="com.ztech.fakecalllollipop.SelectContactFragment"
+            class="com.mio.jrdv.autofakecall.SelectContactFragment"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_select_contact">
     </fragment>
@@ -49,7 +49,7 @@
             android:id="@+id/callScheduleTimePicker"
             android:layout_width="match_parent"
             tools:layout="@layout/fragment_select_time"
-            class="com.ztech.fakecalllollipop.SelectTimeFragment"
+            class="com.mio.jrdv.autofakecall.SelectTimeFragment"
             android:layout_height="wrap_content">
     </fragment>
 

@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.ztech.fakecalllollipop.FakeRingerActivity"
+        tools:context="com.mio.jrdv.autofakecall.FakeRingerActivity"
         android:background="@drawable/ringing_bg">
 
     <RelativeLayout
