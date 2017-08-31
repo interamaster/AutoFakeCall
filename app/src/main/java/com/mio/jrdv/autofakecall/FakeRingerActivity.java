@@ -352,7 +352,8 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         callerName.setText(name);
 
-        Uri ringtoneURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Uri ringtoneURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);//usa el mismo tono que tenga el movil!!!
+
 
         ringtone = RingtoneManager.getRingtone(getApplicationContext(), ringtoneURI);
 

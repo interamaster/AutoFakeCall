@@ -5,4 +5,14 @@
     <dimen name="incoming_call_widget_circle_size">56.0dip</dimen>
     <dimen name="glowpadview_outerring_diameter">250.0dip</dimen>
     <dimen name="layout_margin">20dp</dimen>
+
+
+    //s6
+
+    <dimen name="s6_btn_width">56dp</dimen>
+    <dimen name="s6_circle_head">120dp</dimen>
+    <dimen name="s6_unkonwn01">0dp</dimen>
+    <dimen name="s6_viewpager_dot">10dp</dimen>
+    <dimen name="s6_button">50dp</dimen>
+    <dimen name="s6_unknow_llamadasboton">70dp</dimen>
 </resources>

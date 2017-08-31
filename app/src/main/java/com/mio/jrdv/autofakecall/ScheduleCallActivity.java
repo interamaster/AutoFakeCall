@@ -28,6 +28,7 @@ import java.util.Calendar;
 
 
 //V03 añadido permiso para poder detcatr el marcado de 111 para volver a mostar icono en LAUNCHER!!!
+//V032 AÑADIDO S6 XML
 
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {

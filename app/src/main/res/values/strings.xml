@@ -26,4 +26,19 @@
     <string name="sms">SMS</string>
     <string name="message">Message...</string>
     <string name="draft">Draft</string>
+
+
+
+    //para s6
+
+
+    <string name="incall_incoming_call">Incoming call</string>
+    <string name="incall_incoming_hold">Hold</string>
+    <string name="extra_volume">Extra volume</string>
+    <string name="keypad">Keypad</string>
+    <string name="incall_incoming_mute">Mute</string>
+    <string name="samsung_bluetooth">Bluetooth</string>
+    <string name="samsung_handle">REJECT CALL WITH MESSAGE</string>
+    <string name="samsung_add_call">Add call</string>
+    <string name="incall_incoming_speaker">Speaker</string>
 </resources>

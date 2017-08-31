@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    //s6
+
+    <style name="style_s6_btn_text">
+        <item>14sp</item>
+        <item>#ff666666</item>
+        <item>false</item>
+    </style>
+
+
+
 </resources>

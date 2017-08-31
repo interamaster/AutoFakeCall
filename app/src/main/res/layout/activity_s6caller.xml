@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#fffafafa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/up_layout"
+        android:background="#ff50a52e"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s6_unkonwn01"
+        android:layout_weight="418.0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="8dp">
+
+        <TextView android:textSize="16sp"
+            android:textColor="#ffeefae6"
+            android:id="@+id/incomingTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/incall_incoming_call"
+            android:layout_centerVertical="true" />
+
+        <Chronometer
+            android:textSize="16sp"
+            android:textColor="#ffe7fbe0"
+            android:id="@+id/time"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+        <TextView android:textSize="14sp"
+            android:textColor="#ffe7fbe0"
+            android:id="@+id/hold"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/incall_incoming_hold"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:id="@+id/circle_head_photo"
+            android:layout_width="@dimen/s6_circle_head"
+            android:layout_height="@dimen/s6_circle_head"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:textSize="32sp"
+            android:textColor="#ffffffff"
+            android:id="@+id/nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="14sp"
+            android:textColor="#ffdaddd9"
+            android:id="@+id/numberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>
+
+<RelativeLayout
+android:id="@+id/down_layout"
+android:background="#fffafafa"
+android:layout_width="match_parent"
+android:layout_height="@dimen/s6_unkonwn01"
+android:layout_weight="612.0">
+
+<RelativeLayout
+android:id="@+id/receive_layout"
+android:visibility="visible"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_alignParentBottom="true">
+
+<ImageView
+    android:id="@+id/receive"
+    android:layout_width="@dimen/s6_unknow_llamadasboton"
+    android:layout_height="@dimen/s6_unknow_llamadasboton"
+    android:layout_marginLeft="30dp"
+    android:src="@drawable/s6_answer_xml" />
+
+<ImageView
+    android:id="@+id/reject"
+    android:layout_width="@dimen/s6_unknow_llamadasboton"
+    android:layout_height="@dimen/s6_unknow_llamadasboton"
+    android:layout_marginRight="30dp"
+    android:src="@drawable/s6_reject_xml"
+    android:layout_alignParentRight="true" />
+
+<TextView
+    android:textSize="12sp"
+    android:textColor="#ff515151"
+    android:gravity="center_vertical|center_horizontal"
+    android:id="@+id/handle"
+    android:background="#ffe6e6e6"
+    android:layout_width="match_parent"
+    android:layout_height="28dp"
+    android:text="@string/samsung_handle"
+    android:layout_alignParentBottom="true" />
+
+<ImageView
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:src="@drawable/s6_arrow"
+    android:layout_above="@id/handle"
+    android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+
+<LinearLayout
+android:orientation="vertical"
+android:id="@+id/endcall_layout"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_toEndOf="@+id/receive_layout">
+
+<LinearLayout
+android:gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="18dp"
+  >
+
+<ImageView
+    android:layout_width="@dimen/s6_viewpager_dot"
+    android:layout_height="@dimen/s6_viewpager_dot"
+    android:src="@drawable/s6_viewpager_dot"
+    android:tint="#ff666666" />
+
+<ImageView
+    android:layout_width="@dimen/s6_viewpager_dot"
+    android:layout_height="@dimen/s6_viewpager_dot"
+    android:layout_marginLeft="12dp"
+    android:src="@drawable/s6_viewpager_dot"
+    android:tint="#ff999999" />
+
+</LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="12dp"
+android:layout_marginTop="26dp"
+android:layout_marginRight="12dp">
+
+
+<LinearLayout
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0"
+    >
+
+<ImageView
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_add_call"
+    android:layout_gravity="center"
+    />
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/samsung_add_call"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+</LinearLayout>
+
+<LinearLayout
+
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0">
+
+<ImageView
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_extra_volume"
+    android:layout_gravity="center"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/extra_volume"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+</LinearLayout>
+
+<LinearLayout
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0">
+
+
+<ImageView
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_bluetooth"
+    android:layout_gravity="center"/>
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/samsung_bluetooth"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+</LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="12dp"
+android:layout_marginTop="32dp"
+android:layout_marginRight="12dp">
+
+
+<LinearLayout
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0">
+
+<ImageView
+    android:id="@+id/speaker"
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_speak"
+    android:layout_gravity="center"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/incall_incoming_speaker"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+</LinearLayout>
+
+<LinearLayout
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0">
+
+<ImageView
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_keypad"
+    android:layout_gravity="center"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/keypad"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+
+</LinearLayout>
+
+<LinearLayout
+android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+android:orientation="vertical"
+android:layout_width="@dimen/s6_unkonwn01"
+android:layout_height="wrap_content"
+android:layout_weight="1.0">
+
+
+<ImageView
+    android:layout_width="@dimen/s6_button"
+    android:layout_height="@dimen/s6_button"
+    android:src="@drawable/s6_mute"
+    android:layout_gravity="center"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/incall_incoming_mute"
+    style="@style/style_s6_btn_text"
+    android:layout_gravity="center"/>
+</LinearLayout>
+
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_weight="2"
+        android:id="@+id/end_call"
+        android:layout_width="@dimen/s6_unknow_llamadasboton"
+        android:layout_height="@dimen/s6_unknow_llamadasboton"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/s6_endcall_xml" />
+</LinearLayout>
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+        </LinearLayout>
+
+<RelativeLayout
+android:id="@+id/incall_fullscreen_black"
+android:background="0x106000c"
+android:visibility="gone"
+android:layout_width="match_parent"
+android:layout_height="match_parent" />
+
+
+</RelativeLayout>
