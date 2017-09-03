@@ -41,13 +41,13 @@
             android:name=".FakeRingerActivity"
             android:excludeFromRecents="true"
             android:screenOrientation="portrait">
-
+        <!-- solo para ver anim
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        -->
 
         </activity>
 
@@ -88,7 +88,18 @@
             android:enabled="true"
             android:exported="true"></receiver>
 
-        <activity android:name=".S6caller"></activity>
+        <activity android:name=".S6caller"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait">
+
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

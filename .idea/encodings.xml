@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mio/jrdv/autofakecall/view/Android44ReceiveAnim.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mio/jrdv/autofakecall/view/C2277h.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/mio/jrdv/autofakecall/view/C2279c.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_00.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_01.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_02.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_03.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_04.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_05.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_06.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_07.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_08.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/android_42_09.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/call_multitasking_incomingcall_01.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/call_multitasking_incomingcall_02.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/call_multitasking_incomingcall_03.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_arrow_down_white_24dp.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_lockscreen_handle_pressed41.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/note5_loading.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/s5_jog_tab_left_bg_press.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/s5_unlock_right_press.png" charset="ISO-8859-1" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

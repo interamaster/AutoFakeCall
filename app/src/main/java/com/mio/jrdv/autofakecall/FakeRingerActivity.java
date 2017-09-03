@@ -33,6 +33,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mio.jrdv.autofakecall.view.Android44ReceiveAnim;
+
 import java.io.InputStream;
 import java.util.Locale;
 
@@ -105,6 +107,12 @@ public class FakeRingerActivity extends AppCompatActivity {
     //mio para aniamacion infinte
 
     boolean descolgado=false;
+
+    // idem copado de FAKCALL
+
+      private Android44ReceiveAnim animcircular;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,12 +202,19 @@ public class FakeRingerActivity extends AppCompatActivity {
         ring = (ImageView) findViewById(R.id.ring);
 
 
+
+        //mio anim
+
+        this.animcircular = (Android44ReceiveAnim) findViewById(R.id.receive_anim);
+        this.animcircular.setVisibility(View.VISIBLE);
+
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
 
-        /*
-        TODO quitar tars pruebas
+
+        //TODO quitar tars pruebas
+
         name = extras.getString("name");
 
         voice = extras.getString("voice", "");
@@ -212,8 +227,9 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         int hangUpAfter = extras.getInt("hangUpAfter");
 
-        */
 
+
+        /*
         name ="name";
 
         voice =  "";
@@ -226,7 +242,7 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         int hangUpAfter = 20;
 
-
+        */
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -267,7 +283,7 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         //con nuevo metodo:true =inifnite //false=1 loop
 
-        setAnimationGrowShrink(ring,true);
+        //setAnimationGrowShrink(ring,true);
 
         callActionButton.setOnTouchListener(new View.OnTouchListener() {
 
@@ -287,12 +303,19 @@ public class FakeRingerActivity extends AppCompatActivity {
                     //mio para mos la infinite animation
 
 
-                    ring.animate().setListener(null);
-                    setAnimationGrowShrink(ring,false);//false= 1 loop
+                   // ring.animate().setListener(null);
+                    //setAnimationGrowShrink(ring,false);//false= 1 loop
 
 
 
                     ring.startAnimation(ringExpandAnimation);
+
+                    //oculta anim
+
+
+                    animcircular.setVisibility(View.INVISIBLE);
+
+
 
                     answer.setVisibility(View.VISIBLE);
 
@@ -333,6 +356,10 @@ public class FakeRingerActivity extends AppCompatActivity {
                         main.setBackground(bg2);
 
                         endCall.setVisibility(View.VISIBLE);
+
+                        //muestro de nuevo anim
+
+                        animcircular.setVisibility(View.VISIBLE);
 
                         wakeLock.acquire();
 
@@ -392,11 +419,14 @@ public class FakeRingerActivity extends AppCompatActivity {
                     //mio para mos la infinite animation
 
 
-                    ring.animate().setListener(null);
-                    setAnimationGrowShrink(ring,false);//false= 1 loop
+                   // ring.animate().setListener(null);
+                   // setAnimationGrowShrink(ring,false);//false= 1 loop
 
 
 
+                    //muestro de nuevo anim
+
+                    animcircular.setVisibility(View.VISIBLE);
 
                     ring.startAnimation(ringShrinkAnimation);
 
@@ -448,7 +478,7 @@ public class FakeRingerActivity extends AppCompatActivity {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////mio aniamcion llmada inifinte/////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 
     private void setAnimationGrowShrink(final ImageView imgV, final boolean inifinte){
         final Animation animationEnlarge = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ring_expand);
@@ -493,7 +523,7 @@ public class FakeRingerActivity extends AppCompatActivity {
 
     }
 
-
+*/
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -647,6 +677,14 @@ public class FakeRingerActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
+        //para la anim
+
+        if (this.animcircular != null) {
+            this.animcircular.m13214c();
+        }
+
+
+
         super.onDestroy();
 
         stopVoice();
@@ -674,6 +712,21 @@ public class FakeRingerActivity extends AppCompatActivity {
         unMuteAll();
 
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentMediaVolume, 0);
+
+    }
+
+    //pra ala anim
+
+    public void onPause() {
+        super.onPause();
+        this.animcircular.m13213b();
+    }
+
+    public void onResume() {
+        super.onResume();
+       // if (!this.a) {
+            this.animcircular.m13212a();
+      //  }
 
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mains6"
     android:background="#fffafafa"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,7 +8,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:id="@+id/up_layout"
@@ -31,9 +34,15 @@
                     android:text="@string/incall_incoming_call"
                     android:textColor="#ffeefae6"
                     android:textSize="16sp" />
+                <ImageView android:id="@+id/loading"
+                    android:background="@drawable/note5_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/incomingTV"
+                    android:layout_centerVertical="true" />
 
-                <Chronometer
-                    android:id="@+id/time"
+                <TextView
+                    android:id="@+id/timeduration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -97,26 +106,119 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
   >
 
-<ImageView
-    android:id="@+id/receive"
-    android:layout_width="@dimen/s6_unknow_llamadasboton"
-    android:layout_height="@dimen/s6_unknow_llamadasboton"
-    android:layout_marginLeft="30dp"
-    android:src="@drawable/s6_answer_xml"
-    android:layout_alignParentBottom="true"
-    android:layout_marginBottom="70dp"/>
 
-<ImageView
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentBottom="true"
+        >
+
+    <ImageView android:id="@+id/note5_big_blue"
+        android:background="@drawable/s5_jog_tab_left_bg_press"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+          android:id="@+id/receive"
+         android:layout_width="@dimen/s6_unknow_llamadasboton"
+         android:layout_height="@dimen/s6_unknow_llamadasboton"
+          android:layout_marginLeft="30dp"
+          android:src="@drawable/s6_answer_xml"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:background="@null"/>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/receive"
+        android:layout_centerVertical="true">
+        <ImageView
+            android:id="@+id/answer_arrow_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_down_white_24dp"
+            android:rotation="90" />
+        <ImageView android:id="@+id/answer_arrow_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-12dp"
+            android:src="@drawable/ic_arrow_down_white_24dp"
+            android:rotation="90" />
+        <ImageView android:id="@+id/answer_arrow_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-12dp"
+            android:src="@drawable/ic_arrow_down_white_24dp"
+            android:rotation="90" />
+    </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="-2dp"
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+        <ImageView android:id="@+id/note5_big_red"
+            android:background="@drawable/s5_unlock_right_press"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+<ImageButton
     android:id="@+id/reject"
     android:layout_width="@dimen/s6_unknow_llamadasboton"
     android:layout_height="@dimen/s6_unknow_llamadasboton"
     android:layout_marginRight="30dp"
     android:src="@drawable/s6_reject_xml"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginBottom="70dp"/>
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    android:scaleType="fitCenter"
+    android:background="@null"/>
 
-<TextView
+
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_toLeftOf="@id/reject"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/reject_arrow_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="-12dp"
+                android:src="@drawable/ic_arrow_down_white_24dp"
+                android:rotation="270" />
+            <ImageView android:id="@+id/reject_arrow_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="-12dp"
+                android:src="@drawable/ic_arrow_down_white_24dp"
+                android:rotation="270" />
+            <ImageView android:id="@+id/reject_arrow_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_arrow_down_white_24dp"
+                android:rotation="270" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <TextView
     android:textSize="12sp"
     android:textColor="#ff515151"
     android:gravity="center_vertical|center_horizontal"
@@ -140,9 +242,8 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:id="@+id/endcall_layout"
 android:layout_width="match_parent"
-android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_toEndOf="@+id/receive_layout">
+android:layout_height="match_parent"
+    android:visibility="invisible">
 
 <LinearLayout
 android:gravity="center_horizontal|center_vertical"
@@ -329,13 +430,18 @@ android:layout_weight="1.0">
     android:layout_height="match_parent"
     >
 
-    <ImageView
+    <ImageButton
         android:layout_weight="2"
         android:id="@+id/end_call"
         android:layout_width="@dimen/s6_unknow_llamadasboton"
         android:layout_height="@dimen/s6_unknow_llamadasboton"
         android:layout_marginTop="40dp"
-        android:src="@drawable/s6_endcall_xml" />
+        android:src="@drawable/s6_endcall_xml"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickEndCall"/>
 </LinearLayout>
 
     </LinearLayout>
