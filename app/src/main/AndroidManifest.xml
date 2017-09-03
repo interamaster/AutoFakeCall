@@ -40,7 +40,16 @@
         <activity
             android:name=".FakeRingerActivity"
             android:excludeFromRecents="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
 
         <receiver android:name=".LaunchAppViaDialReceiver">
             <intent-filter>
@@ -57,11 +66,14 @@
             android:excludeFromRecents="true"
             android:screenOrientation="portrait"
             android:targetActivity=".ScheduleCallActivity">
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            -->
         </activity-alias>
 
         <activity

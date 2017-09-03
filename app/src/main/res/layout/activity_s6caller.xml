@@ -9,97 +9,102 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/up_layout"
-        android:background="#ff50a52e"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/s6_unkonwn01"
-        android:layout_weight="418.0">
+        <RelativeLayout
+            android:id="@+id/up_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/s6_unkonwn01"
+            android:layout_weight="42.0"
+            android:background="#ff50a52e">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginRight="8dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="9dp">
 
-        <TextView android:textSize="16sp"
-            android:textColor="#ffeefae6"
-            android:id="@+id/incomingTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/incall_incoming_call"
-            android:layout_centerVertical="true" />
+                <TextView
+                    android:id="@+id/incomingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/incall_incoming_call"
+                    android:textColor="#ffeefae6"
+                    android:textSize="16sp" />
 
-        <Chronometer
-            android:textSize="16sp"
-            android:textColor="#ffe7fbe0"
-            android:id="@+id/time"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
+                <Chronometer
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="#ffe7fbe0"
+                    android:textSize="16sp"
+                    android:visibility="invisible" />
 
-        <TextView android:textSize="14sp"
-            android:textColor="#ffe7fbe0"
-            android:id="@+id/hold"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/incall_incoming_hold"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/hold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/incall_incoming_hold"
+                    android:textColor="#ffe7fbe0"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
-    <LinearLayout
-        android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
-        <ImageView
-            android:id="@+id/circle_head_photo"
-            android:layout_width="@dimen/s6_circle_head"
-            android:layout_height="@dimen/s6_circle_head"
-            android:scaleType="centerCrop" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end"
+                android:orientation="vertical">
 
-        <TextView
-            android:textSize="32sp"
-            android:textColor="#ffffffff"
-            android:id="@+id/nameTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/circle_head_photo"
+                    android:layout_width="@dimen/s6_circle_head"
+                    android:layout_height="@dimen/s6_circle_head"
+                    android:scaleType="centerCrop" />
 
-        <TextView
-            android:textSize="14sp"
-            android:textColor="#ffdaddd9"
-            android:id="@+id/numberTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffffff"
+                    android:textSize="32sp" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/numberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffdaddd9"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
-<RelativeLayout
+        </RelativeLayout>
+
+        <RelativeLayout
 android:id="@+id/down_layout"
 android:background="#fffafafa"
 android:layout_width="match_parent"
 android:layout_height="@dimen/s6_unkonwn01"
-android:layout_weight="612.0">
+android:layout_weight="77.0">
 
 <RelativeLayout
 android:id="@+id/receive_layout"
 android:visibility="visible"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:layout_alignParentBottom="true">
+  >
 
 <ImageView
     android:id="@+id/receive"
     android:layout_width="@dimen/s6_unknow_llamadasboton"
     android:layout_height="@dimen/s6_unknow_llamadasboton"
     android:layout_marginLeft="30dp"
-    android:src="@drawable/s6_answer_xml" />
+    android:src="@drawable/s6_answer_xml"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="70dp"/>
 
 <ImageView
     android:id="@+id/reject"
@@ -107,7 +112,9 @@ android:layout_alignParentBottom="true">
     android:layout_height="@dimen/s6_unknow_llamadasboton"
     android:layout_marginRight="30dp"
     android:src="@drawable/s6_reject_xml"
-    android:layout_alignParentRight="true" />
+    android:layout_alignParentRight="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="70dp"/>
 
 <TextView
     android:textSize="12sp"
@@ -138,7 +145,7 @@ android:layout_height="wrap_content"
     android:layout_toEndOf="@+id/receive_layout">
 
 <LinearLayout
-android:gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end"
+android:gravity="center_horizontal|center_vertical"
 android:orientation="horizontal"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
@@ -339,7 +346,7 @@ android:layout_weight="1.0">
 
 <RelativeLayout
 android:id="@+id/incall_fullscreen_black"
-android:background="0x106000c"
+android:background="#000000"
 android:visibility="gone"
 android:layout_width="match_parent"
 android:layout_height="match_parent" />

@@ -101,6 +101,11 @@ public class FakeRingerActivity extends AppCompatActivity {
         }
     };
 
+
+    //mio para aniamacion infinte
+
+    boolean descolgado=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -128,6 +133,15 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         final Animation ringShrinkAnimation = AnimationUtils.loadAnimation(this, R.anim.ring_shrink);
 
+
+        //mio aniamcion al llamar
+        /*
+        //no funciona infinite solo lo hace 1 vez...npi pruebo con metodo
+        //setAnimationGrowShrink
+        final Animation ringInfiniteAnimation = AnimationUtils.loadAnimation(this, R.anim.ring_infiniteanimation);
+        ringInfiniteAnimation.setRepeatCount(Animation.INFINITE);
+        ringInfiniteAnimation.setRepeatMode(Animation.REVERSE);
+        */
         final Drawable bg2;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -179,6 +193,13 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         ring = (ImageView) findViewById(R.id.ring);
 
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+
+        /*
+        TODO quitar tars pruebas
         name = extras.getString("name");
 
         voice = extras.getString("voice", "");
@@ -190,6 +211,25 @@ public class FakeRingerActivity extends AppCompatActivity {
         contactImageString = extras.getString("contactImage");
 
         int hangUpAfter = extras.getInt("hangUpAfter");
+
+        */
+
+        name ="name";
+
+        voice =  "";
+
+        duration = 5;
+
+        number = "132456789";
+
+        //contactImageString = extras.getString("contactImage");
+
+        int hangUpAfter = 20;
+
+
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
 
         getSupportActionBar().hide();
 
@@ -219,6 +259,16 @@ public class FakeRingerActivity extends AppCompatActivity {
 
         setContactImage(true);
 
+
+
+        //Empezamos  a ejecutar la animacion de llmada infinita
+
+        //ring.startAnimation(ringInfiniteAnimation);
+
+        //con nuevo metodo:true =inifnite //false=1 loop
+
+        setAnimationGrowShrink(ring,true);
+
         callActionButton.setOnTouchListener(new View.OnTouchListener() {
 
             float x1 = 0, x2 = 0, y1 = 0, y2 = 0;
@@ -233,6 +283,14 @@ public class FakeRingerActivity extends AppCompatActivity {
                     x1 = event.getX();
 
                     y1 = event.getY();
+
+                    //mio para mos la infinite animation
+
+
+                    ring.animate().setListener(null);
+                    setAnimationGrowShrink(ring,false);//false= 1 loop
+
+
 
                     ring.startAnimation(ringExpandAnimation);
 
@@ -331,9 +389,28 @@ public class FakeRingerActivity extends AppCompatActivity {
 
                     text.setVisibility(View.INVISIBLE);
 
+                    //mio para mos la infinite animation
+
+
+                    ring.animate().setListener(null);
+                    setAnimationGrowShrink(ring,false);//false= 1 loop
+
+
+
+
                     ring.startAnimation(ringShrinkAnimation);
 
                     callActionButton.setVisibility(View.VISIBLE);
+
+                    //volvemos a ejecutar la animacion de llmada infinita
+
+                   // ring.startAnimation(ringInfiniteAnimation);
+
+                    //con nuevo metodo:
+
+                    //solo si no estamos en llamada
+
+
 
                 }
 
@@ -366,6 +443,65 @@ public class FakeRingerActivity extends AppCompatActivity {
         vibrator.vibrate(pattern, 0);
 
     }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////mio aniamcion llmada inifinte/////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    private void setAnimationGrowShrink(final ImageView imgV, final boolean inifinte){
+        final Animation animationEnlarge = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ring_expand);
+        final Animation animationShrink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.ring_shrink);
+
+        imgV.startAnimation(animationEnlarge);
+
+        animationEnlarge.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+
+                if(inifinte) {
+                    imgV.startAnimation(animationShrink);
+                }
+            }
+
+        });
+
+        animationShrink.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                if (inifinte) {
+                    imgV.startAnimation(animationEnlarge);
+
+                }
+            }
+        });
+
+    }
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
     private void setContactImage(boolean tint) {
 
@@ -460,6 +596,13 @@ public class FakeRingerActivity extends AppCompatActivity {
         vibrator.cancel();
 
         ringtone.stop();
+
+        //mio para que pare anmimacion infinte
+
+
+
+
+
 
     }
 

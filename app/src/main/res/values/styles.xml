@@ -12,9 +12,9 @@
     //s6
 
     <style name="style_s6_btn_text">
-        <item>14sp</item>
-        <item>#ff666666</item>
-        <item>false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ff666666</item>
+
     </style>
 
 
