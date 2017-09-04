@@ -41,4 +41,6 @@
     <string name="samsung_handle">REJECT CALL WITH MESSAGE</string>
     <string name="samsung_add_call">Add call</string>
     <string name="incall_incoming_speaker">Speaker</string>
+    <string name="samsung">SAMSUNG</string>
+    <string name="android">ANDROID</string>
 </resources>

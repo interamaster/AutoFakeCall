@@ -34,7 +34,8 @@
                     android:text="@string/incall_incoming_call"
                     android:textColor="#ffeefae6"
                     android:textSize="16sp" />
-                <ImageView android:id="@+id/loading"
+                <com.mio.jrdv.autofakecall.AnimListIncomingCall
+                    android:id="@+id/loading"
                     android:background="@drawable/note5_loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -132,6 +133,7 @@ android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:background="@null"/>
 
+        <!--
     <LinearLayout android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,6 +159,28 @@ android:layout_height="match_parent"
             android:src="@drawable/ic_arrow_down_white_24dp"
             android:rotation="90" />
     </LinearLayout>
+
+    -->
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="98dp"
+
+        >
+
+
+        <com.mio.jrdv.autofakecall.AnimListLoaderGreen
+            android:layout_height="20dp"
+            android:layout_width="70dp"
+            />
 
     </RelativeLayout>
 
@@ -186,7 +210,7 @@ android:layout_height="match_parent"
     android:scaleType="fitCenter"
     android:background="@null"/>
 
-
+    <!--
         <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -213,6 +237,27 @@ android:layout_height="match_parent"
                 android:src="@drawable/ic_arrow_down_white_24dp"
                 android:rotation="270" />
         </LinearLayout>
+
+        -->
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="98dp"
+
+        >
+
+
+        <com.mio.jrdv.autofakecall.AnimListLoaderRed
+            android:layout_height="20dp"
+            android:layout_width="70dp"
+            />
 
     </RelativeLayout>
 

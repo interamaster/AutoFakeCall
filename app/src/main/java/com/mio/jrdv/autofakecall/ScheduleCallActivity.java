@@ -31,6 +31,8 @@ import java.util.Calendar;
 //V032 AÑADIDO S6 XML
 //v035 añadido anim android puro
 //v038 añadido s6 con funcion ok menos ANIMACIOONES
+//v04 añadido radiogrup para elegir Samsung o google, animacions de samsung ok(falla imagen del caller esta cuadarad y mal centrada) y quitar anim
+//de android cuando se contesta
 
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
@@ -53,6 +55,8 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
     EditText voiceInput = null;
 
     RadioGroup callType;
+
+    RadioGroup BrandType;//para elegir Samsung o Google
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +141,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
 
         callType = (RadioGroup)findViewById(R.id.callTypeRadioGroup);
+        BrandType=(RadioGroup)findViewById(R.id.BrandTypeRadioGroup);
 
         voiceInput = (EditText)findViewById(R.id.voiceFileInput);
 
@@ -270,39 +275,90 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////RADIO BUTTON TIPO LLAMADA//////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         RadioButton radioButton = (RadioButton)findViewById(callType.getCheckedRadioButtonId());
 
         int radioButtonIndex = callType.indexOfChild(radioButton);
 
         ContentResolver contentResolver = getContentResolver();
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////RADIO BUTTON TIPO XML SAMSUNG/GOOGLE...//////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        RadioButton radioButtonBrandType = (RadioButton)findViewById(BrandType.getCheckedRadioButtonId());
+
+        int radioButtonIndexBrandType = BrandType.indexOfChild(radioButtonBrandType);
+
+
+
         if (radioButtonIndex == 0) {
 
-            Intent intent = new Intent(this, FakeRingerActivity.class);
+            if (radioButtonIndexBrandType == 0) {
 
-            intent.putExtra("name", name);
+                Intent intent = new Intent(this, S6caller.class);
 
-            intent.putExtra("number", "Mobile " + number);
 
-            intent.putExtra("contactImage", contactImage);
+                intent.putExtra("name", name);
 
-            intent.putExtra("duration", Integer.parseInt(duration));
+                intent.putExtra("number", "Mobile " + number);
 
-            intent.putExtra("hangUpAfter", Integer.parseInt(hangUpAfter));
+                intent.putExtra("contactImage", contactImage);
 
-            intent.putExtra("voice", voice);
+                intent.putExtra("duration", Integer.parseInt(duration));
 
-            final int fakeCallID = (int) System.currentTimeMillis();
+                intent.putExtra("hangUpAfter", Integer.parseInt(hangUpAfter));
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, fakeCallID, intent, PendingIntent.FLAG_ONE_SHOT);
+                intent.putExtra("voice", voice);
 
-            AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+                final int fakeCallID = (int) System.currentTimeMillis();
 
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, fakeCallID, intent, PendingIntent.FLAG_ONE_SHOT);
 
-            Toast.makeText(this, "Fake call scheduled", Toast.LENGTH_SHORT).show();
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
-            finish();
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+                Toast.makeText(this, "Fake call scheduled", Toast.LENGTH_SHORT).show();
+
+                finish();
+            }
+
+            else {
+
+
+                Intent intent = new Intent(this, FakeRingerActivity.class);
+
+
+                intent.putExtra("name", name);
+
+                intent.putExtra("number", "Mobile " + number);
+
+                intent.putExtra("contactImage", contactImage);
+
+                intent.putExtra("duration", Integer.parseInt(duration));
+
+                intent.putExtra("hangUpAfter", Integer.parseInt(hangUpAfter));
+
+                intent.putExtra("voice", voice);
+
+                final int fakeCallID = (int) System.currentTimeMillis();
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, fakeCallID, intent, PendingIntent.FLAG_ONE_SHOT);
+
+                AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+                Toast.makeText(this, "Fake call scheduled", Toast.LENGTH_SHORT).show();
+
+                finish();
+            }
+
+
 
         } else if (radioButtonIndex == 1) {
 
@@ -317,6 +373,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
             Toast.makeText(this, "Fake missed call added to log", Toast.LENGTH_SHORT).show();
 
         }
+
 
     }
 

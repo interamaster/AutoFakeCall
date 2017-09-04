@@ -114,9 +114,6 @@ public class S6caller extends AppCompatActivity {
 
 
 
-    // idem copado de FAKCALL
-
-    private Android44ReceiveAnim animcircular;
 
 
 
@@ -148,9 +145,6 @@ public class S6caller extends AppCompatActivity {
 
 
 
-        final Animation ringExpandAnimation = AnimationUtils.loadAnimation(this, R.anim.ring_expand);
-
-        final Animation ringShrinkAnimation = AnimationUtils.loadAnimation(this, R.anim.ring_shrink);
 
 
 
@@ -210,7 +204,7 @@ public class S6caller extends AppCompatActivity {
 
 
         //TODO quitar tars pruebas
-/*
+
         name = extras.getString("name");
 
         voice = extras.getString("voice", "");
@@ -223,11 +217,11 @@ public class S6caller extends AppCompatActivity {
 
         int hangUpAfter = extras.getInt("hangUpAfter");
 
-*/
+
 
 
                 //TODO quitar tars pruebas
-
+/*
         name ="name";
 
         voice =  "";
@@ -239,7 +233,7 @@ public class S6caller extends AppCompatActivity {
         //contactImageString = extras.getString("contactImage");
 
         int hangUpAfter = 20;
-
+*/
 
         ////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -295,36 +289,10 @@ public class S6caller extends AppCompatActivity {
 
                     y1 = event.getY();
 
-                    Log.d("info"," tocado boton aceptar x1:"+x1+"  y y1="+y1);
+                  //  Log.d("info"," tocado boton aceptar x1:"+x1+"  y y1="+y1);
 
 
-                    //mio para mos la infinite animation
 
-
-                   // ring.startAnimation(ringExpandAnimation);
-
-                    //oculta anim
-
-
-                   // animcircular.setVisibility(View.INVISIBLE);
-
-
-/*
-                    answer.setVisibility(View.VISIBLE);
-
-                    decline.setVisibility(View.VISIBLE);
-
-                    text.setVisibility(View.VISIBLE);
-
-                    callActionButton.setVisibility(View.INVISIBLE);
-
-  */
-                   //ocultamos layout de llmada y ponemps el de haber acpertado
-                  //  callActionButtons.setVisibility(View.INVISIBLE);
-                   // endCallLayout.setVisibility(View.VISIBLE);
-
-
-                //todo mostar esto animado
 
                     pulsadoBotonVerde.setVisibility(View.VISIBLE);
 
@@ -337,13 +305,13 @@ public class S6caller extends AppCompatActivity {
                     y2 = event.getY();
 
 
-                    Log.d("info"," moviendo boton aceptar x2:"+x2+"  y y2="+y2);
+                  //  Log.d("info"," moviendo boton aceptar x2:"+x2+"  y y2="+y2);
 
                     if ((x2 - 200) > x1) {
 
                      //acepto llalamda
 
-                        Log.d("INFO","llamada ACEPTADA");
+                      //  Log.d("INFO","llamada ACEPTADA");
 
                         wakeLock.acquire();
                         //oculto loading y m,ensake de incoming call
@@ -399,7 +367,7 @@ public class S6caller extends AppCompatActivity {
 
                     //no hemos aceptado quitar le boton de cirvulo animado en boton verde
 
-                    //todo quitar esto animado
+
 
                     pulsadoBotonVerde.setVisibility(View.INVISIBLE);
 
@@ -435,36 +403,9 @@ public class S6caller extends AppCompatActivity {
 
                     y1 = event.getY();
 
-                    Log.d("info"," tocado boton declkine x1:"+x1+"  y y1="+y1);
+                  //  Log.d("info"," tocado boton declkine x1:"+x1+"  y y1="+y1);
 
 
-                    //mio para mos la infinite animation
-
-
-                    // ring.startAnimation(ringExpandAnimation);
-
-                    //oculta anim
-
-
-                    // animcircular.setVisibility(View.INVISIBLE);
-
-
-/*
-                    answer.setVisibility(View.VISIBLE);
-
-                    decline.setVisibility(View.VISIBLE);
-
-                    text.setVisibility(View.VISIBLE);
-
-                    callActionButton.setVisibility(View.INVISIBLE);
-
-  */
-                    //ocultamos layout de llmada y ponemps el de haber acpertado
-                    //  callActionButtons.setVisibility(View.INVISIBLE);
-                    // endCallLayout.setVisibility(View.VISIBLE);
-
-
-                    //todo mostar esto animado
 
                     pulsadoBotonRojo.setVisibility(View.VISIBLE);
 
@@ -477,13 +418,13 @@ public class S6caller extends AppCompatActivity {
                     y2 = event.getY();
 
 
-                    Log.d("info"," moviendo boton decline x2:"+x2+"  y y2="+y2);
+                  //  Log.d("info"," moviendo boton decline x2:"+x2+"  y y2="+y2);
 
                     if ((x2 + 200) < x1) {
 
                         //rechazo la  llalamda
 
-                Log.d("INFO","llamada declina");
+              //  Log.d("INFO","llamada declina");
 
                         finish();
 
@@ -495,7 +436,6 @@ public class S6caller extends AppCompatActivity {
 
                     //no hemos aceptado quitar le boton de cirvulo animado en boton verde
 
-                    //todo quitar esto animado
 
                     pulsadoBotonRojo.setVisibility(View.INVISIBLE);
 
