@@ -23,8 +23,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
+import java.util.Date;
+import java.util.Locale;
 
 
 //V03 añadido permiso para poder detcatr el marcado de 111 para volver a mostar icono en LAUNCHER!!!
@@ -33,6 +35,7 @@ import java.util.Calendar;
 //v038 añadido s6 con funcion ok menos ANIMACIOONES
 //v04 añadido radiogrup para elegir Samsung o google, animacions de samsung ok(falla imagen del caller esta cuadarad y mal centrada) y quitar anim
 //de android cuando se contesta
+//v05 añadido radiogroup de tiempo rapido y coreegidas S6 foto redonda y nombre y numero ok
 
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
@@ -57,6 +60,10 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
     RadioGroup callType;
 
     RadioGroup BrandType;//para elegir Samsung o Google
+
+    RadioGroup TimeFastSelection;//para elegir tiempo rapido
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +149,63 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         callType = (RadioGroup)findViewById(R.id.callTypeRadioGroup);
         BrandType=(RadioGroup)findViewById(R.id.BrandTypeRadioGroup);
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////RADIO BUTTON TIEMPO RAPIDO 10 SECS/1MIN / 5MIN//////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        final EditText timeInput = (EditText)findViewById(R.id.scheduleTimePicker);
+        TimeFastSelection=(RadioGroup)findViewById(R.id.callTimeRadioGroup);
+
+
+
+        //le añadimos listener al radiogroup
+
+        TimeFastSelection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                calendar= Calendar.getInstance();
+                int cHour = calendar.get(Calendar.HOUR_OF_DAY);
+
+                int cMinute = calendar.get(Calendar.MINUTE);
+
+                int cSecs=calendar.get(Calendar.SECOND);
+
+
+
+
+                if (checkedId == R.id.tensecs) {
+                    //dañado 10 secs
+
+                     calendar.add(Calendar.SECOND,10);
+
+                } else  if (checkedId == R.id.oneminute) {
+                    //añado 1 min
+
+                    calendar.add(Calendar.SECOND,60);
+                }
+             else  if (checkedId == R.id.fiveminutes) {
+                //añado 5 min
+
+                    calendar.add(Calendar.SECOND,300);
+            }
+
+
+
+
+                Date scheduleTime = calendar.getTime();
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a", Locale.US);
+
+                timeInput.setText(dateFormat.format(scheduleTime));
+            }
+        });
+
+
+
+
 
         voiceInput = (EditText)findViewById(R.id.voiceFileInput);
 
@@ -373,6 +437,8 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
             Toast.makeText(this, "Fake missed call added to log", Toast.LENGTH_SHORT).show();
 
         }
+
+
 
 
     }

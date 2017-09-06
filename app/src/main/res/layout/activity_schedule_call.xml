@@ -13,37 +13,63 @@
     </fragment>
 
     <RadioGroup android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:id="@+id/callTypeRadioGroup"
-                android:layout_marginTop="137dp">
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:id="@+id/callTypeRadioGroup"
+    android:layout_marginTop="137dp">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/incoming"
+        android:id="@+id/incomingRadioButton"
+        android:checked="true"
+        android:layout_margin="@dimen/layout_margin"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/outgoing"
+        android:id="@+id/outgoingRadioButton"/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/missed"
+        android:id="@+id/missedRadioButton"
+        android:layout_margin="@dimen/layout_margin"/>
+</RadioGroup>
+
+    <RadioGroup android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/callTimeRadioGroup"
+        android:layout_below="@+id/callTypeRadioGroup">
         <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/incoming"
-                android:id="@+id/incomingRadioButton"
-                android:checked="true"
-                android:layout_margin="@dimen/layout_margin"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tensecs"
+            android:id="@+id/tensecs"
+            android:checked="true"
+            android:layout_margin="@dimen/layout_margin"/>
         <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/outgoing"
-                android:id="@+id/outgoingRadioButton"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1_min"
+            android:id="@+id/oneminute"/>
         <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/missed"
-                android:id="@+id/missedRadioButton"
-                android:layout_margin="@dimen/layout_margin"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 min"
+            android:id="@+id/fiveminutes"
+            android:layout_margin="@dimen/layout_margin"/>
     </RadioGroup>
 
     <RadioGroup android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:id="@+id/BrandTypeRadioGroup"
-        android:layout_marginTop="187dp">
+        android:layout_below="@+id/callTimeRadioGroup">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

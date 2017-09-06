@@ -51,6 +51,7 @@ public class SelectTimeFragment extends Fragment {
 
                 int cMinute = calendar.get(Calendar.MINUTE);
 
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(activity, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
