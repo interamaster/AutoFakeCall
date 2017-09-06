@@ -359,7 +359,7 @@ public class FakeRingerActivity extends AppCompatActivity {
 
                         //muestro de nuevo anim
 
-                        animcircular.setVisibility(View.VISIBLE);
+                        animcircular.setVisibility(View.INVISIBLE);
 
                         wakeLock.acquire();
 

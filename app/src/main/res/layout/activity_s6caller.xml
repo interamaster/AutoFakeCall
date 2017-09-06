@@ -16,7 +16,7 @@
             android:id="@+id/up_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/s6_unkonwn01"
-            android:layout_weight="52.0"
+            android:layout_weight="48.0"
             android:background="#ff50a52e">
 
             <RelativeLayout
@@ -38,11 +38,12 @@
                 <com.mio.jrdv.autofakecall.AnimListIncomingCall
                     android:id="@+id/loading"
                     android:background="@drawable/note5_loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="46dp"
+                    android:layout_height="20dp"
                     android:layout_toRightOf="@id/incomingTV"
                     android:layout_centerVertical="true" />
 
+               <!--
                 <TextView
                     android:id="@+id/timeduration"
                     android:layout_width="wrap_content"
@@ -51,6 +52,17 @@
                     android:textColor="#ffe7fbe0"
                     android:textSize="16sp"
                     android:visibility="invisible" />
+                -->
+                <Chronometer
+                    android:id="@+id/chronometer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textColor="#ffe7fbe0"
+                    android:textSize="16sp"
+                    android:visibility="invisible" />
+
+
 
                 <TextView
                     android:id="@+id/hold"
@@ -67,9 +79,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_centerVertical="true"
                 android:id="@+id/RLFoto"
-                android:layout_below="@+id/incomingCallRelativeLayout"
+
                 android:layout_centerInParent="true">
 
                 <!--
@@ -85,8 +97,8 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:src="@drawable/samsung_no_pic"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="#FFFFFFFF"
                     android:layout_gravity="center"/>
 
             </LinearLayout>

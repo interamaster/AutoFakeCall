@@ -36,7 +36,7 @@ import java.util.Locale;
 //v04 añadido radiogrup para elegir Samsung o google, animacions de samsung ok(falla imagen del caller esta cuadarad y mal centrada) y quitar anim
 //de android cuando se contesta
 //v05 añadido radiogroup de tiempo rapido y coreegidas S6 foto redonda y nombre y numero ok
-
+//v051 corregida anim android y timer s6
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
 

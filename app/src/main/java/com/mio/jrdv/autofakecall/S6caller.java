@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
@@ -27,6 +28,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -62,7 +64,7 @@ public class S6caller extends AppCompatActivity {
     private  ImageView pulsadoBotonRojo;
 
     private TextView incomingTV;
-    private TextView callDuration;
+    private Chronometer callDuration;
 
     private RelativeLayout main;
 
@@ -182,7 +184,7 @@ public class S6caller extends AppCompatActivity {
 
         //callStatus = (TextView) findViewById(R.id.callStatus);
 
-        callDuration = (TextView) findViewById(R.id.timeduration);
+         callDuration = (Chronometer) findViewById(R.id.chronometer);
 
         main = (RelativeLayout) findViewById(R.id.mains6);
 
@@ -327,9 +329,10 @@ public class S6caller extends AppCompatActivity {
                             callActionButtons.setVisibility(View.INVISIBLE);
                             endCallLayout.setVisibility(View.VISIBLE);
 
+                        stopRinging();
 
                         playVoice();
-
+/*
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -348,6 +351,13 @@ public class S6caller extends AppCompatActivity {
 
                             }
                         }, 10);
+**/
+//quito handler y uso cronometer!!
+
+                        Chronometer mChronometer=(Chronometer) findViewById(R.id.chronometer);
+                        mChronometer.setBase(SystemClock.elapsedRealtime());
+                        mChronometer.start();
+
 
                         handler.postDelayed(new Runnable() {
 
