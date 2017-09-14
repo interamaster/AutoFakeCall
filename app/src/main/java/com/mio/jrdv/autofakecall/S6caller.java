@@ -1,6 +1,7 @@
 package com.mio.jrdv.autofakecall;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,10 +19,10 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.Vibrator;
+import android.provider.CallLog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.telephony.PhoneNumberUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -35,13 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mio.jrdv.autofakecall.view.Android44ReceiveAnim;
-
 import java.io.InputStream;
-import java.util.Locale;
-
-import static com.mio.jrdv.autofakecall.R.id.callActionButton;
-import static com.mio.jrdv.autofakecall.R.id.callStatus;
 
 public class S6caller extends AppCompatActivity {
 
@@ -601,5 +596,83 @@ public class S6caller extends AppCompatActivity {
 
         }
     }
+
+
+
+
+    // adds a missed call to the log and shows a notification
+    private void missedCall() {
+
+        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this);
+
+        nBuilder.setSmallIcon(android.R.drawable.stat_notify_missed_call);
+
+        nBuilder.setContentTitle(name);
+
+        nBuilder.setContentText(resources.getString(R.string.missed_call));
+
+        nBuilder.setColor(Color.rgb(4, 137, 209));
+
+        nBuilder.setAutoCancel(true);
+
+        Intent showCallLog = new Intent(Intent.ACTION_VIEW);
+
+        showCallLog.setType(CallLog.Calls.CONTENT_TYPE);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, showCallLog, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        nBuilder.setContentIntent(pendingIntent);
+
+        showCallLog.setType(CallLog.Calls.CONTENT_TYPE);
+
+        notificationManager.notify(MISSED_CALL_NOTIFICATION, nBuilder.build());
+
+        CallLogUtilities.addCallToLog(contentResolver, number, 0, CallLog.Calls.MISSED_TYPE, System.currentTimeMillis());
+
+    }
+
+    private void incomingCall() {
+
+        CallLogUtilities.addCallToLog(contentResolver, number, secs, CallLog.Calls.INCOMING_TYPE, System.currentTimeMillis());
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+
+
+
+
+        super.onDestroy();
+
+        stopVoice();
+
+        notificationManager.cancel(INCOMING_CALL_NOTIFICATION);
+
+        if (secs > 0) {
+
+            incomingCall();
+
+        } else {
+
+            missedCall();
+
+        }
+
+        wakeLock.release();
+
+        audioManager.setRingerMode(currentRingerMode);
+
+        audioManager.setStreamVolume(AudioManager.STREAM_RING, currentRingerVolume, 0);
+
+        stopRinging();
+
+        unMuteAll();
+
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentMediaVolume, 0);
+
+    }
+
 
 }

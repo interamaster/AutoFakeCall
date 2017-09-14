@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.CallLog;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,6 +29,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import br.com.safety.audio_recorder.AudioListener;
+import br.com.safety.audio_recorder.AudioRecordButton;
+import br.com.safety.audio_recorder.AudioRecording;
+import br.com.safety.audio_recorder.RecordingItem;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 
 //V03 añadido permiso para poder detcatr el marcado de 111 para volver a mostar icono en LAUNCHER!!!
 //V032 AÑADIDO S6 XML
@@ -37,17 +47,30 @@ import java.util.Locale;
 //de android cuando se contesta
 //v05 añadido radiogroup de tiempo rapido y coreegidas S6 foto redonda y nombre y numero ok
 //v051 corregida anim android y timer s6
+//v055 cooregido que seguia vibrando y sonando en samsun al rechazar y añadida logica grabacion..pte probar en dispositivo real
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
 
     private static final int FILE_SELECT = 1002;
 
-    private static final int HANA_UP_AFTER = 15;
+    private static final int HANA_UP_AFTER = 35;
 
     private static final int DURATION = 63;
 
     //para pedir acceso a contactos
     private static final int REQUEST_CODE_READ_CONTACTS = 99;
+    //IDEM CALL LOGS
+
+    private static final int REQUEST_CODE_CALL_LOGS = 199;
+
+    //IDEM OUTGOING CALL
+
+    private static final int REQUEST_CODE_OUTGOING_CALL = 299;
+
+    //IDEM RECORD AUDIO
+
+    private static final int REQUEST_CODE_RECORD_AUDIO = 399;
+
 
     Calendar calendar = null;
 
@@ -57,11 +80,20 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
     EditText voiceInput = null;
 
-    RadioGroup callType;
+    //RadioGroup callType;//no lo vpoy a usar ..solo hara fake calls
 
     RadioGroup BrandType;//para elegir Samsung o Google
 
     RadioGroup TimeFastSelection;//para elegir tiempo rapido
+
+
+
+
+
+    //para el record audio
+
+
+    private AudioRecordButton audioRecordButton;
 
 
 
@@ -119,7 +151,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
             ActivityCompat.requestPermissions(this,
                     new String[]{ Manifest.permission.WRITE_CALL_LOG },
-                    REQUEST_CODE_READ_CONTACTS);
+                    REQUEST_CODE_CALL_LOGS);
         }
 
 
@@ -136,18 +168,39 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
             ActivityCompat.requestPermissions(this,
                     new String[]{ Manifest.permission.PROCESS_OUTGOING_CALLS },
-                    REQUEST_CODE_READ_CONTACTS);
+                    REQUEST_CODE_OUTGOING_CALL);
         }
 
 
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////detectatr RECORD AUDIO///////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                && ActivityCompat.checkSelfPermission(this,
+                RECORD_AUDIO)
+                == PackageManager.PERMISSION_DENIED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{ RECORD_AUDIO },
+                    REQUEST_CODE_RECORD_AUDIO);
+        }
+
+*/
+
+        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, RECORD_AUDIO, READ_EXTERNAL_STORAGE},0);
+
+        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE}, 0);
+
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        callType = (RadioGroup)findViewById(R.id.callTypeRadioGroup);
+       // callType = (RadioGroup)findViewById(R.id.callTypeRadioGroup);//no lo vpoy a usar ..solo hara fake calls
         BrandType=(RadioGroup)findViewById(R.id.BrandTypeRadioGroup);
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,6 +275,80 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
             }
         });
 
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////AUDIO RECORD//////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //https://github.com/safetysystemtechnology/audio-recorder-button
+        //https://stackoverflow.com/questions/11116051/how-can-i-record-voice-in-android-as-long-as-hold-a-button
+
+        audioRecordButton = (AudioRecordButton) findViewById(R.id.audio_record_button);
+
+        audioRecordButton.setOnAudioListener(new AudioListener() {
+            @Override
+            public void onStop(RecordingItem recordingItem) {
+                Toast.makeText(getBaseContext(), "Audio...", Toast.LENGTH_SHORT).show();
+                new AudioRecording(getBaseContext()).play(recordingItem);
+
+                //n3cesitmaos una referencia a esa grabacion
+
+                String RecordedFilePath=recordingItem.getFilePath();
+                String RecordeName=recordingItem.getName();
+                Log.d("INFO RECORD PATH",RecordedFilePath);
+                Log.d("INFO RECORD NAME",RecordeName);
+
+                String Recorded=RecordedFilePath+RecordeName;
+
+                //lo guardamos en pref
+
+                Myapplication.preferences.edit().putString(Myapplication.PREF_RECORDFILEPATHNAME,Recorded).commit();
+
+
+                //actualziamos el path
+                voiceInput.setText(Recorded);
+                voice=Recorded;
+
+
+
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(getBaseContext(), "Cancel", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Log.d("MainActivity", "Error: " + e.getMessage());
+            }
+        });
+
+
+
+        //chequemaos si ya habia grabacion anterior
+
+        //para que ponga el valor ya elegido en ele spinner
+        String RecordFilealready = Myapplication.preferences.getString(Myapplication.PREF_RECORDFILEPATHNAME,"NO");//the value you want the position for
+
+        if (!RecordFilealready.equals("NO")) {
+
+            //ya habia algo antes actulaizamos el path
+
+
+            voiceInput.setText(RecordFilealready);
+            voice=RecordFilealready;
+
+        }
+
+        else {
+            Log.d("NO RECORDING BEFORE!!","poseso");
+        }
+
+
+
+
     }
 
     @Override
@@ -271,9 +398,9 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
             case R.id.smsOption:
 
-                intent = new Intent(this, ScheduleSMSActivity.class);
+               // intent = new Intent(this, ScheduleSMSActivity.class);
 
-                startActivity(intent);
+                //startActivity(intent);
 
                 return true;
 
@@ -291,9 +418,9 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         EditText timeInput = (EditText)findViewById(R.id.scheduleTimePicker);
 
-        EditText durationInput = (EditText)findViewById(R.id.callDurationInput);
+        //EditText durationInput = (EditText)findViewById(R.id.callDurationInput);//no lo vpoy a usar ..la duration sera fija de 30 segs
 
-        EditText hangUpAfterInput = (EditText)findViewById(R.id.hangUpAfterInput);
+        EditText hangUpAfterInput = (EditText)findViewById(R.id.hangUpAfterInput);//no lo vpoy a usar ..la duration sera fija de 30 segs
 
         String name = nameInput.getText().toString();
 
@@ -301,9 +428,11 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         String time = timeInput.getText().toString();
 
-        String duration = durationInput.getText().toString();
+        //String duration = durationInput.getText().toString();//no lo vpoy a usar ..la duration sera fija de 30 segs
+        String duration="30";
 
-        String hangUpAfter = hangUpAfterInput.getText().toString();
+        String hangUpAfter = hangUpAfterInput.getText().toString();//no lo vpoy a usar ..la duration sera fija de 30 segs
+
 
         if (number.equals("")) {
 
@@ -343,9 +472,9 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
         //////////////////////////RADIO BUTTON TIPO LLAMADA//////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        RadioButton radioButton = (RadioButton)findViewById(callType.getCheckedRadioButtonId());
+      //  RadioButton radioButton = (RadioButton)findViewById(callType.getCheckedRadioButtonId());//no lo vpoy a usar ..solo hara fake calls
 
-        int radioButtonIndex = callType.indexOfChild(radioButton);
+       // int radioButtonIndex = callType.indexOfChild(radioButton);//no lo vpoy a usar ..solo hara fake calls
 
         ContentResolver contentResolver = getContentResolver();
 
@@ -359,7 +488,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
 
 
-        if (radioButtonIndex == 0) {
+       // if (radioButtonIndex == 0) {//no lo vpoy a usar ..solo hara fake calls
 
             if (radioButtonIndexBrandType == 0) {
 
@@ -422,8 +551,8 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
                 finish();
             }
 
-
-
+/*
+//no lo vpoy a usar ..solo hara fake calls
         } else if (radioButtonIndex == 1) {
 
             CallLogUtilities.addCallToLog(contentResolver, number, Integer.parseInt(duration), CallLog.Calls.OUTGOING_TYPE, calendar.getTimeInMillis());
@@ -438,7 +567,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         }
 
-
+*/
 
 
     }
@@ -476,6 +605,12 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         this.contactImage = contactImage;
 
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 }

@@ -16,10 +16,10 @@
     <string name="show_application_icon">Show application icon in launcher</string>
     <string name="number_to_dial">Number to dial to launch app</string>
     <string name="default_number">111</string>
-    <string name="hang_up_after">Hang Up After</string>
+    <string name="hang_up_after">Hang Up After (Default 35 secs)</string>
     <string name="voice">Voice</string>
     <string name="about">About</string>
-    <string name="about_message">This Application Was Built By Zelalem Mekonen.\nGithub: https://www.github.com/zolamk/fake-call-lolipop</string>
+    <string name="about_message">This Application Was Built By JRDV Soft</string>
     <string name="private_number">Private</string>
     <string name="unknown">Unknown</string>
     <string name="missed_call">Missed Call</string>

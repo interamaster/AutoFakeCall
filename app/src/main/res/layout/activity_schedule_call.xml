@@ -12,6 +12,7 @@
             tools:layout="@layout/fragment_select_contact">
     </fragment>
 
+    <!-- //no lo vpoy a usar ..solo hara fake calls
     <RadioGroup android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="horizontal"
@@ -37,13 +38,14 @@
         android:id="@+id/missedRadioButton"
         android:layout_margin="@dimen/layout_margin"/>
 </RadioGroup>
+-->
 
     <RadioGroup android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:id="@+id/callTimeRadioGroup"
-        android:layout_below="@+id/callTypeRadioGroup">
+        android:layout_marginTop="137dp">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,6 +97,7 @@
     </fragment>
 
 
+    <!-- //no lo vpoy a usar ..la duration sera fija de 30 segs
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,10 +110,11 @@
             android:layout_below="@id/callScheduleTimePicker"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"/>
+            -->
 
     <EditText
             android:id="@+id/hangUpAfterInput"
-            android:layout_below="@+id/callDurationInput"
+            android:layout_below="@id/callScheduleTimePicker"
             android:hint="@string/hang_up_after"
             android:inputType="number"
             android:layout_marginLeft="@dimen/layout_margin"
@@ -118,15 +122,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+
+
     <EditText
             android:id="@+id/voiceFileInput"
-            android:layout_below="@id/hangUpAfterInput"
+        android:layout_below="@id/hangUpAfterInput"
             android:hint="@string/voice"
             android:focusable="false"
             android:layout_marginStart="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginEnd="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+
+    <br.com.safety.audio_recorder.AudioRecordButton
+        android:id="@+id/audio_record_button"
+        android:layout_below="@id/voiceFileInput"
+        android:layout_centerInParent="true"
+        android:layout_width="150dp"
+        android:layout_height="80dp" />
+
+
 
     <Button
             android:layout_width="wrap_content"

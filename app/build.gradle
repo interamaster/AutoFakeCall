@@ -32,6 +32,10 @@ dependencies {
 
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
+    //recorder de audio
+
+    compile 'com.github.safetysystemtechnology:audio-recorder-button:v1.3'
+
 
     testCompile 'junit:junit:4.12'
 }
