@@ -4,11 +4,20 @@
                 tools:context="com.mio.jrdv.autofakecall.ScheduleCallActivity"
                 android:layout_height="match_parent">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
+
     <fragment
             android:id="@+id/selectContactCallFragment"
             android:layout_width="match_parent"
             class="com.mio.jrdv.autofakecall.SelectContactFragment"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:layout="@layout/fragment_select_contact">
     </fragment>
 
@@ -40,12 +49,29 @@
 </RadioGroup>
 -->
 
-    <RadioGroup android:layout_width="match_parent"
-        android:layout_height="60dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/RLTIMEyTYPEJUNTOS"
         android:orientation="horizontal"
+        android:layout_below="@id/selectContactCallFragment">
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:id="@+id/RLTimeSelect"
+        android:background="@android:color/holo_blue_bright"
+        >
+
+    <RadioGroup android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/callTimeRadioGroup"
-        android:layout_marginTop="137dp">
+        android:layout_marginTop="0dp"
+        android:checked="false" >
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,12 +92,42 @@
             android:layout_margin="@dimen/layout_margin"/>
     </RadioGroup>
 
+        <fragment
+
+            android:id="@+id/callScheduleTimePicker"
+            android:layout_width="match_parent"
+            tools:layout="@layout/fragment_select_time"
+            class="com.mio.jrdv.autofakecall.SelectTimeFragment"
+            android:layout_height="40dp">
+        </fragment>
+
+    </RelativeLayout>
+
+                                                                                                                                                                 
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:id="@+id/RLTypeSelect"
+        android:layout_below="@id/RLTimeSelect"
+        android:background="@color/darkWhite">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/SamsungorAndroidPicture"
+            android:background="@drawable/ui_android_50_incoming"
+            android:scaleType="fitCenter"
+             />
+
+
     <RadioGroup android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center"
         android:id="@+id/BrandTypeRadioGroup"
-        android:layout_below="@+id/callTimeRadioGroup">
+        android:layout_below="@id/SamsungorAndroidPicture"
+         >
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,15 +143,10 @@
 
     </RadioGroup>
 
-    <fragment
-            android:layout_below="@+id/BrandTypeRadioGroup"
-            android:id="@+id/callScheduleTimePicker"
-            android:layout_width="match_parent"
-            tools:layout="@layout/fragment_select_time"
-            class="com.mio.jrdv.autofakecall.SelectTimeFragment"
-            android:layout_height="wrap_content">
-    </fragment>
+    </RelativeLayout>
 
+
+    </LinearLayout>
 
     <!-- //no lo vpoy a usar ..la duration sera fija de 30 segs
     <EditText
@@ -114,7 +165,7 @@
 
     <EditText
             android:id="@+id/hangUpAfterInput"
-            android:layout_below="@id/callScheduleTimePicker"
+            android:layout_below="@id/RLTIMEyTYPEJUNTOS"
             android:hint="@string/hang_up_after"
             android:inputType="number"
             android:layout_marginLeft="@dimen/layout_margin"
@@ -122,11 +173,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RLRecord"
+        android:background="@color/colorAccent"
+        android:layout_below="@id/hangUpAfterInput">
 
     <EditText
             android:id="@+id/voiceFileInput"
-        android:layout_below="@id/hangUpAfterInput"
+
             android:hint="@string/voice"
             android:focusable="false"
             android:layout_marginStart="@dimen/layout_margin"
@@ -143,6 +199,7 @@
         android:layout_height="80dp" />
 
 
+    </RelativeLayout>
 
     <Button
             android:layout_width="wrap_content"
@@ -154,5 +211,12 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"/>
+
+     </LinearLayout>
+
+
+    </ScrollView>
+
+
 
 </RelativeLayout>

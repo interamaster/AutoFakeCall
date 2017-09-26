@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -48,6 +47,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 //v05 añadido radiogroup de tiempo rapido y coreegidas S6 foto redonda y nombre y numero ok
 //v051 corregida anim android y timer s6
 //v055 cooregido que seguia vibrando y sonando en samsun al rechazar y añadida logica grabacion..pte probar en dispositivo real
+//v056 empezadoa cambiar el layout pral
 
 public class ScheduleCallActivity extends AppCompatActivity implements SelectTimeFragment.IEventListener, SelectContactFragment.IEventListener {
 
@@ -210,6 +210,7 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
         final EditText timeInput = (EditText)findViewById(R.id.scheduleTimePicker);
         TimeFastSelection=(RadioGroup)findViewById(R.id.callTimeRadioGroup);
+        TimeFastSelection.clearCheck();//para que no paraezca ninguno pulsdo por decfecto
 
 
 
@@ -296,10 +297,10 @@ public class ScheduleCallActivity extends AppCompatActivity implements SelectTim
 
                 String RecordedFilePath=recordingItem.getFilePath();
                 String RecordeName=recordingItem.getName();
-                Log.d("INFO RECORD PATH",RecordedFilePath);
+                Log.d("INFO RECORD PATH",RecordedFilePath);//este lo lleva completo con nombre tambinne
                 Log.d("INFO RECORD NAME",RecordeName);
 
-                String Recorded=RecordedFilePath+RecordeName;
+                String Recorded=RecordedFilePath;//este lo lleva completo con nombre tambinne
 
                 //lo guardamos en pref
 
